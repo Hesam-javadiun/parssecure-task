@@ -1,4 +1,4 @@
-import { DataContext } from "./context";
+import { DataContext } from "@/component/data-provider/context";
 import { useContext } from "react";
 
 export default function useDataContext() {

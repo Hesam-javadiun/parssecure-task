@@ -13,7 +13,7 @@ type DataContextProviderPropsType = {
   listOfData: ListItem[];
 };
 
-const DataContextProvider = ({
+const DataProvider = ({
   children,
   listOfData,
 }: DataContextProviderPropsType) => {
@@ -45,4 +45,4 @@ const DataContextProvider = ({
   );
 };
 
-export default DataContextProvider;
+export default DataProvider;
