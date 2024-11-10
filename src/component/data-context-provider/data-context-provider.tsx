@@ -1,21 +1,8 @@
 import { DataContext } from "./context";
 import type { ReactNode } from "react";
 import { useCallback, useState } from "react";
-import data from "@/data/data.json";
+import type { ListItem } from "@/api";
 
-type ListItem = {
-  id: string;
-  name: string;
-  tags: string[];
-  contain: ["Link", "HTML"];
-  level: "Normal" | "Low" | "High";
-  Date: Date;
-};
-
-const fetchData = () => {
-  console.log("data", typeof data, data);
-  return data;
-};
 export type StateType = {
   list: ListItem[];
   mutateListItem: (index: number, newItem: ListItem) => void;
@@ -23,11 +10,17 @@ export type StateType = {
 
 type DataContextProviderPropsType = {
   children: ReactNode;
+  listOfData: ListItem[];
 };
 
-const DataContextProvider = ({ children }: DataContextProviderPropsType) => {
-  const data = fetchData();
-  const [list, setList] = useState<ListItem[]>(data);
+const DataContextProvider = ({
+  children,
+  listOfData,
+}: DataContextProviderPropsType) => {
+  //   ToDo
+  //   const sortedList = useMemo(() => {}, []);
+
+  const [list, setList] = useState<ListItem[]>(listOfData);
 
   const mutateList = useCallback(
     (index: number, newItem: ListItem) => {
