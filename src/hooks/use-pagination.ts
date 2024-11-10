@@ -85,16 +85,13 @@ const usePagination = function ({
   list,
   numberItemsNeedToBeShownInEachPage,
 }: usePaginationInputs) {
+
   const [state, dispatch] = useReducer(
     reducer,
     list,
     createInitialState.bind(null, numberItemsNeedToBeShownInEachPage)
-    // {
-    //   maxPaginationNumbers: 10,
-    //   selectedNumber: 1,
-    //   shownItems: list,
-    // }
   );
+  
   const { selectedNumber } = state;
   const paginationNumberClickHandler = useCallback(
     (index: number) => {

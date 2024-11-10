@@ -2,6 +2,7 @@ import { DataContext } from "./context";
 import type { ReactNode } from "react";
 import { useCallback, useState } from "react";
 import data from "@/data/data.json";
+
 type ListItem = {
   id: string;
   name: string;
