@@ -1,4 +1,4 @@
 import DataContextProvider from "./data-context-provider";
-import useDataContextHook from "./use-data-context-hook";
+import useDataContext from "./use-data-context-hook";
 
-export { DataContextProvider, useDataContextHook };
+export { DataContextProvider, useDataContext };
