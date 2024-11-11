@@ -10,7 +10,7 @@
     padding: 0;
     margin: 0;
   }
-  
+
   body {
     /*
     to understand where this came from read this:
@@ -20,4 +20,12 @@
     */
     font-size: clamp(1rem, 1vw + 0.63rem, 1.5rem);
   }
+}
+
+@layer components {
+
+  .custom-transition {
+    @apply transition-all duration-100 ease-linear;
+  }
+
 }

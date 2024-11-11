@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { filterHelper } from "@/utils";
 import type { FormEvent } from "react";
 
-const useFilterData = function (unfilteredList: unknown[]) {
-  const searchTermRef = useRef<string>("");
+const useFilterData = function <T>(unfilteredList: T[]) {
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const isFirstRender = useRef<boolean>(true);
 
   const [filteredList, setList] = useState(unfilteredList);
@@ -15,21 +15,21 @@ const useFilterData = function (unfilteredList: unknown[]) {
     }
 
     const timeoutId = setTimeout(() => {
-      const filteredList = filterHelper.filterList(searchTermRef.current, unfilteredList);
+      const filteredList = filterHelper.filterList(searchTerm, unfilteredList);
       setList(filteredList);
-    }, 1500);
+    }, 500);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [searchTermRef.current]);
+  }, [searchTerm, unfilteredList]);
 
   const searchTermChangeHandler = (event: FormEvent<HTMLInputElement>) => {
-    searchTermRef.current = event.currentTarget.value;
+    setSearchTerm(event.currentTarget.value);
   };
 
   return {
-    value: searchTermRef.current,
+    searchTermValue: searchTerm,
     searchTermChangeHandler,
     filteredList,
   };

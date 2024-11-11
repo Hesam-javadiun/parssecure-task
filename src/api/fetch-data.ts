@@ -6,18 +6,14 @@ export type ListItem = {
   tags: string[];
   contain: string[];
   level: string;
-  date: Date;
+  date: string;
 };
 
-type DataItem = Omit<ListItem, "date"> & { date: string };
+
 
 const fetchData = (): ListItem[] => {
-  return (data.items as DataItem[]).map((item: DataItem) => {
-    return {
-      ...item,
-      date: new Date(item.date),
-    };
-  });
+  return data.items
+
 };
 
 export default fetchData;

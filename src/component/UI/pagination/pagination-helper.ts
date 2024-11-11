@@ -1,7 +1,7 @@
 type PaginationPartsType = {
-  rightNumbers: number[];
+  firstNumbers: number[];
   middleNumbers?: number[];
-  leftNumbers?: number[];
+  endNumbers?: number[];
 };
 
 export default function howDoesPaginationShowLookLike(
@@ -11,7 +11,7 @@ export default function howDoesPaginationShowLookLike(
   let showThreeDotBeforeSelectedPage = true,
     showThreeDotAfterSelectedPage = true;
 
-  const paginationParts: PaginationPartsType = { rightNumbers: [] };
+  const paginationParts: PaginationPartsType = { firstNumbers: [] };
 
   //scenario one    < 1 2 3 4 5 > 
   if (isThereAMaximumFivePaginateNumberOrBelow(maxPaginationNumbers)) {
@@ -20,7 +20,7 @@ export default function howDoesPaginationShowLookLike(
 
     let i = 1;
     while (i <= maxPaginationNumbers) {
-      paginationParts.rightNumbers.push(i);
+      paginationParts.firstNumbers.push(i);
       i++;
     }
   }
@@ -34,7 +34,7 @@ export default function howDoesPaginationShowLookLike(
 
     let i = 1;
     while (i <= selectedNumber + 1) {
-      paginationParts.rightNumbers.push(i);
+      paginationParts.firstNumbers.push(i);
       i++;
     }
   }
@@ -46,11 +46,11 @@ export default function howDoesPaginationShowLookLike(
   ) {
     showThreeDotAfterSelectedPage = false;
 
-    paginationParts.rightNumbers = [1, 2];
-    paginationParts.leftNumbers = [];
+    paginationParts.firstNumbers = [1, 2];
+    paginationParts.endNumbers = [];
     let i = selectedNumber - 1;
     while (i <= maxPaginationNumbers) {
-      paginationParts.leftNumbers.push(i);
+      paginationParts.endNumbers.push(i);
       i++;
     }
   }
@@ -62,13 +62,13 @@ export default function howDoesPaginationShowLookLike(
     !isSelectedPaginateCloseToEnd(selectedNumber, maxPaginationNumbers) &&
     !isSelectedPaginateCloseToStart(selectedNumber)
   ) {
-    paginationParts.rightNumbers = [1, 2];
+    paginationParts.firstNumbers = [1, 2];
     paginationParts.middleNumbers = [
       selectedNumber - 1,
       selectedNumber,
       selectedNumber + 1,
     ];
-    paginationParts.leftNumbers = [maxPaginationNumbers - 1, maxPaginationNumbers];
+    paginationParts.endNumbers = [maxPaginationNumbers - 1, maxPaginationNumbers];
   }
 
   return {
