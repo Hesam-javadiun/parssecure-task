@@ -1,3 +1,4 @@
-import FilterHelper from "./filter";
-
-export const filterHelper = new FilterHelper()
+import Filter from "./filter";
+import Validation from "./validation";
+export const validationUtils = new Validation();
+export const filterUtils = new Filter();

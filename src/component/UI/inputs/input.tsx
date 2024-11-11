@@ -2,7 +2,7 @@ import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 import Typography from "@/component/UI/typography";
 
 type InputProps = ComponentPropsWithoutRef<"input"> & {
-  icon: ReactNode;
+  icon?: ReactNode;
 };
 
 const Input = function Input(props: InputProps) {
@@ -11,7 +11,7 @@ const Input = function Input(props: InputProps) {
     <Typography className="relative">
       <input
         {...inputAttributes}
-        className={`border-[1px] border-solid py-2 border-gray-300 w-full flex items-center  px-4 ${
+        className={`border-[1px] border-solid py-2 border-gray-300 w-full flex items-center rounded-full  px-4 ${
           inputAttributes.className
         } ${icon && "pr-8"}`}
       />

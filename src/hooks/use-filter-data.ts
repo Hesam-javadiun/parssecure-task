@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { filterHelper } from "@/utils";
+import { filterUtils } from "@/utils";
 import type { FormEvent } from "react";
 
 const useFilterData = function <T>(unfilteredList: T[]) {
@@ -15,7 +15,7 @@ const useFilterData = function <T>(unfilteredList: T[]) {
     }
 
     const timeoutId = setTimeout(() => {
-      const filteredList = filterHelper.filterList(searchTerm, unfilteredList);
+      const filteredList = filterUtils.filterList(searchTerm, unfilteredList);
       setList(filteredList);
     }, 500);
 

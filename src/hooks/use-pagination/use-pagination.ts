@@ -1,5 +1,8 @@
 import { useCallback, useReducer, useEffect } from "react";
-import reducer, { filterList, createInitialState } from "./reducer";
+import reducer, {
+  filterListBasedOnSelectedPaginateNumber,
+  createInitialState,
+} from "./reducer";
 
 type usePaginationInputs<C> = {
   list: C[];
@@ -41,7 +44,11 @@ const usePagination = function <T>({
         type: "JUMP_TO_INDEX",
         payload: {
           index,
-          list: filterList(index + 1, numberItemsNeedToBeShownInEachPage, list),
+          list: filterListBasedOnSelectedPaginateNumber(
+            index + 1,
+            numberItemsNeedToBeShownInEachPage,
+            list
+          ),
         },
       });
     },
@@ -56,7 +63,7 @@ const usePagination = function <T>({
 
     dispatch({
       type: "MOVE_TO_NEXT_INDEX",
-      payload: filterList(
+      payload: filterListBasedOnSelectedPaginateNumber(
         selectedNumber + 1,
         numberItemsNeedToBeShownInEachPage,
         list
@@ -78,7 +85,7 @@ const usePagination = function <T>({
 
     dispatch({
       type: "MOVE_TO_PREVIOUS_INDEX",
-      payload: filterList(
+      payload: filterListBasedOnSelectedPaginateNumber(
         selectedNumber - 1,
         numberItemsNeedToBeShownInEachPage,
         list

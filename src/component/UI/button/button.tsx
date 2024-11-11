@@ -1,12 +1,12 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
-  isSelected: boolean;
+  isSelected?: boolean;
 } & ComponentPropsWithoutRef<"button">;
 
 const Button = function ({
   children,
-  isSelected,
+  isSelected = false,
   ...buttonAttribute
 }: ButtonProps) {
   const { className, ...attributes } = buttonAttribute;

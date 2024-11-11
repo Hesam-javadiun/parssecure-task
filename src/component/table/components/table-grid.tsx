@@ -94,21 +94,3 @@ function arePropsEqual(oldProps: TableGridProps, newProps: TableGridProps) {
     firstOldItem.id === lastOldItem.id && firstNewItem.id === lastNewItem.id
   );
 }
-
-// ToDo traversing throw tableHeader
-// problem: unable to unique styling
-// ToDo designing polymorphic Table
-// {Object.keys(tableHeaders).map((key) => {
-//     if (key === "tag") {
-//       return (
-//         <TableCell scope="col">
-//           {item.tags.map((tag) => (
-//             <Tag key={tag} tagText={tag} />
-//           ))}
-//         </TableCell>
-//       );
-//     }
-//     return (
-
-//     );
-//   })}

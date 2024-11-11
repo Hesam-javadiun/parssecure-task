@@ -64,7 +64,7 @@ const reducer = function <T>(
 
 export default reducer;
 
-export const filterList = function (
+export const filterListBasedOnSelectedPaginateNumber = function (
   selectedNumber: number,
   numberItemsNeedToBeShownInEachPage: number,
   list: unknown[]
@@ -87,5 +87,5 @@ export const createInitialState = (
     list.length / numberItemsNeedToBeShownInEachPage
   ).toFixed(),
   selectedNumber: 1,
-  shownItems: filterList(1, numberItemsNeedToBeShownInEachPage, list),
+  shownItems: filterListBasedOnSelectedPaginateNumber(1, numberItemsNeedToBeShownInEachPage, list),
 });

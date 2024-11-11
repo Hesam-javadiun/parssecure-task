@@ -1,4 +1,4 @@
-class FilterHelper {
+class Filter {
   filterList<T>(searchTerm: string, list: T[]): T[] {
     return list.filter((item: unknown) => {
       for (const value of Object.values(item as object)) {
@@ -9,4 +9,4 @@ class FilterHelper {
   }
 }
 
-export default FilterHelper;
+export default Filter;

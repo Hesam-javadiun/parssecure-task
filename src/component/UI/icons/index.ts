@@ -3,9 +3,10 @@ import AngleRight from "./angle-right";
 import DotsVertical from "./dots-vertical";
 import DotsHorizon from "./dots-horizon";
 import Search from "./search";
+import CloseIcon from "./close";
 
 export type IconProps = {
-  className: string;
+  className?: string;
 };
 
 const icons = {
@@ -14,6 +15,7 @@ const icons = {
   angleRight: AngleRight,
   dotsVertical: DotsVertical,
   dotsHorizon: DotsHorizon,
+  close: CloseIcon,
 };
 
 export default icons;

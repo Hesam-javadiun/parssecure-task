@@ -39,7 +39,7 @@ const Pagination = function ({
   // );
 
   return (
-    <ul className="flex flex-row items-center justify-center w-full gap-2 ">
+    <ul className="flex flex-row items-center justify-center w-full gap-1 text-[0.6em]">
       {firstNumbers.length > 1 && (
         <li className="">
           <Button

@@ -1,9 +1,9 @@
 import { IconProps } from ".";
 
-const Search = function ({ className }: IconProps) {
+const CloseIcon = function ({ className }: IconProps) {
   return (
     <svg
-      className={className ?? ""}
+      className={className ?? ''}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -14,11 +14,12 @@ const Search = function ({ className }: IconProps) {
       <path
         stroke="currentColor"
         strokeLinecap="round"
+        strokeLinejoin="round"
         strokeWidth="2"
-        d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+        d="M6 18 17.94 6M18 18 6.06 6"
       />
     </svg>
   );
 };
 
-export default Search;
+export default CloseIcon;

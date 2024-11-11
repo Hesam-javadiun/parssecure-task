@@ -3,7 +3,7 @@ import { IconProps } from ".";
 const DotsHorizon = function ({ className }: IconProps) {
   return (
     <svg
-      className={className}
+      className={className ?? ''}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
