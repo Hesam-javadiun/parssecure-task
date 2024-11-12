@@ -2,7 +2,6 @@ import { TableCell, TableRow, Tag } from ".";
 import type { ListItem } from "@/api";
 import icons from "@/component/UI/icons";
 // type ListItemKeys = keyof ListItem;
-import { memo } from "react";
 
 type TableHeaderSchema = Partial<{
   [key in keyof ListItem]: string;
@@ -19,9 +18,13 @@ const tableHeaders: TableHeaderSchema = {
 type TableGridProps = {
   list: ListItem[];
   clickHandler: (id: string) => void;
+  searchTerm: string;
 };
 
-const TableGrid = memo(function ({ list, clickHandler }: TableGridProps) {
+//todo
+//add memo with arePropsEqual condition to avoid searchTerm changes uncessaryly rerender
+
+const TableGrid = function ({ list, clickHandler }: TableGridProps) {
   return (
     <table className="w-full text-[0.7em] mt-4">
       <thead>
@@ -81,16 +84,25 @@ const TableGrid = memo(function ({ list, clickHandler }: TableGridProps) {
       </tbody>
     </table>
   );
-}, arePropsEqual);
+};
 
 export default TableGrid;
 
-function arePropsEqual(oldProps: TableGridProps, newProps: TableGridProps) {
-  const firstOldItem = oldProps.list[0];
-  const lastOldItem = oldProps.list[oldProps.list.length - 1];
-  const firstNewItem = newProps.list[0];
-  const lastNewItem = newProps.list[newProps.list.length - 1];
-  return (
-    firstOldItem.id === lastOldItem.id && firstNewItem.id === lastNewItem.id
-  );
-}
+// function arePropsEqual(oldProps: TableGridProps, newProps: TableGridProps) {
+//   if (oldProps.searchTerm === newProps.searchTerm) {
+//     return false;
+//   };
+
+//   const oldList = oldProps.list;
+//   const newList = newProps.list;
+
+//   if(oldList.length !== newList.length){
+//     return false
+//   }
+
+//   console.log('old list', oldList, 'new list', newList);
+//   const condition = oldList.every(
+//     (oldItem, index) => oldItem.id === newList[index].id
+//   );
+//   return condition;
+// }

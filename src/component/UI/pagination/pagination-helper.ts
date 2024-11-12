@@ -13,7 +13,7 @@ export default function howDoesPaginationShowLookLike(
 
   const paginationParts: PaginationPartsType = { firstNumbers: [] };
 
-  //scenario one    < 1 2 3 4 5 > 
+  //scenario one    < 1 2 3 4 5 >
   if (isThereAMaximumFivePaginateNumberOrBelow(maxPaginationNumbers)) {
     showThreeDotBeforeSelectedPage = false;
     showThreeDotAfterSelectedPage = false;
@@ -25,7 +25,7 @@ export default function howDoesPaginationShowLookLike(
     }
   }
 
-  //scenario two  < 1 2 3 4 ... 100 > 
+  //scenario two  < 1 2 3 4 ... 100 >
   if (
     !isThereAMaximumFivePaginateNumberOrBelow(maxPaginationNumbers) &&
     isSelectedPaginateCloseToStart(selectedNumber)
@@ -37,9 +37,13 @@ export default function howDoesPaginationShowLookLike(
       paginationParts.firstNumbers.push(i);
       i++;
     }
+    paginationParts.endNumbers = [
+      maxPaginationNumbers - 1,
+      maxPaginationNumbers,
+    ];
   }
 
-  //scenario three  < 1 2 ... 96 97 98 99 100 > 
+  //scenario three  < 1 2 ... 96 97 98 99 100 >
   if (
     !isThereAMaximumFivePaginateNumberOrBelow(maxPaginationNumbers) &&
     isSelectedPaginateCloseToEnd(selectedNumber, maxPaginationNumbers)
@@ -55,7 +59,6 @@ export default function howDoesPaginationShowLookLike(
     }
   }
 
-
   //scenario four   < 1 2 ... 49 50 51 ... 99 100 >
   if (
     !isThereAMaximumFivePaginateNumberOrBelow(maxPaginationNumbers) &&
@@ -68,7 +71,10 @@ export default function howDoesPaginationShowLookLike(
       selectedNumber,
       selectedNumber + 1,
     ];
-    paginationParts.endNumbers = [maxPaginationNumbers - 1, maxPaginationNumbers];
+    paginationParts.endNumbers = [
+      maxPaginationNumbers - 1,
+      maxPaginationNumbers,
+    ];
   }
 
   return {

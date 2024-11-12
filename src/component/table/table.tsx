@@ -9,11 +9,23 @@ import Form from "@/component/form";
 
 const Table = function () {
   const { list } = useDataContext();
+
   const selectedItemRef = useRef<null | string>(null);
   const [needToShowModal, setNeedToShowModal] = useState(false);
-  
+
   const { filteredList, searchTermValue, searchTermChangeHandler } =
     useFilterData(list);
+
+  const searchInput = (
+    <inputs.Input
+      className="text-[0.8em] font-semibold text-slate-700 rounded-3xl"
+      placeholder="search text ..."
+      value={searchTermValue}
+      type="text"
+      onChange={searchTermChangeHandler}
+      icon={<icons.search className="text-gray-300" />}
+    />
+  );
 
   const {
     goNextHandler,
@@ -26,6 +38,16 @@ const Table = function () {
     list: filteredList,
     numberItemsNeedToBeShownInEachPage: 10,
   });
+
+  const pagination = (
+    <Pagination
+      goNextHandler={goNextHandler}
+      goPreviousHandler={goPreviousHandler}
+      paginationNumberClickHandler={paginationNumberClickHandler}
+      maxPaginationNumbers={maxPaginationNumbers}
+      selectedNumber={selectedNumber}
+    />
+  );
 
   const threeDotClickHandler = useCallback((id: string) => {
     selectedItemRef.current = id;
@@ -47,28 +69,12 @@ const Table = function () {
 
   return (
     <>
-      <TableLayout
-        searchInput={
-          <inputs.Input
-            className="text-[0.8em] font-semibold text-slate-700 rounded-3xl"
-            placeholder="search text ..."
-            value={searchTermValue}
-            type="text"
-            onChange={searchTermChangeHandler}
-            icon={<icons.search className="text-gray-300" />}
-          />
-        }
-        pagination={
-          <Pagination
-            goNextHandler={goNextHandler}
-            goPreviousHandler={goPreviousHandler}
-            paginationNumberClickHandler={paginationNumberClickHandler}
-            maxPaginationNumbers={maxPaginationNumbers}
-            selectedNumber={selectedNumber}
-          />
-        }
-      >
-        <TableGrid list={shownItems} clickHandler={threeDotClickHandler} />
+      <TableLayout searchInput={searchInput} pagination={pagination}>
+        <TableGrid
+          list={shownItems}
+          clickHandler={threeDotClickHandler}
+          searchTerm={searchTermValue}
+        />
       </TableLayout>
       {modal}
     </>

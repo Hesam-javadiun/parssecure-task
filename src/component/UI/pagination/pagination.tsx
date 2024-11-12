@@ -17,6 +17,7 @@ const Pagination = function ({
   goPreviousHandler,
   paginationNumberClickHandler,
 }: PaginationProps) {
+  
   const {
     firstNumbers,
     showThreeDotBeforeSelectedPage,
@@ -24,19 +25,6 @@ const Pagination = function ({
     showThreeDotAfterSelectedPage,
     endNumbers,
   } = howDoesPaginationShowLookLike(selectedNumber, maxPaginationNumbers);
-
-  // console.log(
-  //   "firstNumbers",
-  //   firstNumbers,
-  //   "showThreeDotBeforeSelectedPage",
-  //   showThreeDotBeforeSelectedPage,
-  //   "middleNumbers",
-  //   middleNumbers,
-  //   "showThreeDotAfterSelectedPage",
-  //   showThreeDotAfterSelectedPage,
-  //   "endNumbers",
-  //   endNumbers
-  // );
 
   return (
     <ul className="flex flex-row items-center justify-center w-full gap-1 text-[0.6em]">

@@ -5,7 +5,8 @@ import type { ListItem } from "@/api";
 
 export type StateType = {
   list: ListItem[];
-  mutateListItem: (index: number, newItem: ListItem) => void;
+  mutateListItem: (id: string, newItem: ListItem) => void;
+
 };
 
 type DataContextProviderPropsType = {
@@ -21,9 +22,9 @@ const DataProvider = ({
   //   const sortedList = useMemo(() => {}, []);
 
   const [list, setList] = useState<ListItem[]>(listOfData);
-
   const mutateList = useCallback(
-    (index: number, newItem: ListItem) => {
+    (id: string, newItem: ListItem) => {
+      const index = list.findIndex((item) => id === item.id);
       setList((pervList: ListItem[]) => {
         const newList = [...pervList];
         newList[index] = newItem;
