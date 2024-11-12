@@ -71,7 +71,7 @@ const Form = function ({ id, closeModalHandler }: FormPropsType) {
           gotError={!!(touched.reportName && errors.reportName)}
         />
         {touched.reportName && errors.reportName && (
-          <Typography>{errors.reportName}</Typography>
+          <Typography className="text-rose-500">{errors.reportName}</Typography>
         )}
         <inputs.Input
           type="text"
@@ -82,7 +82,9 @@ const Form = function ({ id, closeModalHandler }: FormPropsType) {
           gotError={!!(touched.simulationScenario && errors.simulationScenario)}
         />
         {touched.simulationScenario && errors.simulationScenario && (
-          <Typography>{errors.simulationScenario}</Typography>
+          <Typography className="text-rose-500">
+            {errors.simulationScenario}
+          </Typography>
         )}
         <label>Select date range:</label>
         <inputs.Input
@@ -101,7 +103,7 @@ const Form = function ({ id, closeModalHandler }: FormPropsType) {
           gotError={!!(touched.endDate && errors.endDate)}
         />
         {touched.endDate && errors.endDate && (
-          <Typography>{errors.endDate}</Typography>
+          <Typography className="text-rose-500">{errors.endDate}</Typography>
         )}
         <Button type="submit" className="bg-blue-500">
           <Typography className="text-slate-100">Generate</Typography>

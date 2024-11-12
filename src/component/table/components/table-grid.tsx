@@ -12,7 +12,7 @@ const tableHeaders: TableHeaderSchema = {
   tags: "Tags",
   contain: "Contain",
   level: "Level",
-  date: "Date",
+  date: "Start Date",
 };
 
 type TableGridProps = {
@@ -75,7 +75,6 @@ const TableGrid = function ({ list, clickHandler }: TableGridProps) {
             <TableCell className="basis-1/12">{item.date}</TableCell>
             <TableCell className="basis-1/12">
               <button onClick={clickHandler.bind(null, item.id)}>
-                <p>{item.id}</p>
                 <icons.dotsVertical className="font-semibold "></icons.dotsVertical>
               </button>
             </TableCell>
